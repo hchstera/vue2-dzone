@@ -1,7 +1,7 @@
 <!--suppress CssUnknownTarget -->
 <template>
     <div>
-        <form :id="id" action="/file-upload" class="dropzone">
+        <form :id="id" action="/file-upload" :class="dropzoneClass">
             <slot name="form"></slot>
         </form>
         <div style="visibility: hidden;position: absolute;">
@@ -33,6 +33,10 @@
             id: {
                 type: String,
                 required: true,
+            },
+            dropzoneClass: {
+                type: String,
+                default: 'dropzone dash-dropzone'
             },
             // Dropzone option props see http://www.dropzonejs.com/#config-url
             url: {
@@ -206,7 +210,7 @@
                 };
 
                 return _.merge(defaultLang, this.languages);
-            }
+            },
         },
         methods: {
             initDropzone() {
@@ -269,6 +273,9 @@
             emitDropzoneInstance(dropzone) {
                 this.$emit('dropzone-init', dropzone);
             },
+            registerEvents() {
+
+            },
             checkOverrideOptions() {
                 if (_.size(this.options) > 0) {
                     return this.isOverrideOptions = true;
@@ -280,10 +287,17 @@
         mounted() {
             this.checkOverrideOptions();
             this.initDropzone();
+            this.registerEvents();
         },
     }
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
     @import url('~dropzone/dist/dropzone.css');
+
+    .dash-dropzone {
+        border: 2px dashed #0087F7;
+        border-radius: 5px;
+        background: white;
+    }
 </style>

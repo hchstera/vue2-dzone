@@ -1,6 +1,6 @@
 <template>
     <div>
-        <vue-dzone @dropzone-init="catchDropzone" :options="options" :url="'/photo/upload'" :id="'mydzone'"></vue-dzone>
+        <vue-dzone ref="mydzone" @dropzone-init="catchDropzone" :options="options" :url="'/photo/upload'" :id="'mydzone'"></vue-dzone>
     </div>
 </template>
 
