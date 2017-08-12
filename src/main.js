@@ -1,5 +1,6 @@
 let Vue2DzoneComponent = require('./components/Vue2Dzone.vue');
 
+
 window.Vue2Dzone = {
     DzoneComponent: Vue2DzoneComponent,
     install(Vue) {
