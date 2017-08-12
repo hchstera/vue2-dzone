@@ -1,7 +1,7 @@
 <!--suppress CssUnknownTarget -->
 <template>
     <div>
-        <form :id="id" action="/file-upload" :class="parseDropzoneClass" :style="dropzoneStyle">
+        <form :id="id" action="/file-upload" class="dropzone" :class="parseDropzoneClass" :style="dropzoneStyle">
             <slot name="form"></slot>
         </form>
         <div ref="previewTemplate" style="visibility: hidden;position: absolute;">
@@ -206,8 +206,8 @@
                 return _.merge(defaultLang, this.languages);
             },
             parseDropzoneClass() {
-                if (_.isEmpty(this.dropzoneClass) && this.defaultTheme) {
-                    return 'dropzone dash-dropzone';
+                if (this.defaultTheme) {
+                    return 'dash-dropzone '+this.dropzoneClass;
                 }
 
                 return this.dropzoneClass;
