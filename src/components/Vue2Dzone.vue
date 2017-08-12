@@ -1,7 +1,7 @@
 <!--suppress CssUnknownTarget -->
 <template>
     <div>
-        <form :id="id" action="/file-upload" :class="dropzoneClass">
+        <form :id="id" action="/file-upload" class="dropzone" :class="parseDropzoneClass">
             <slot name="form"></slot>
         </form>
         <div ref="previewTemplate" style="visibility: hidden;position: absolute;">
@@ -22,7 +22,11 @@
             },
             dropzoneClass: {
                 type: String,
-                default: 'dropzone dash-dropzone'
+                default: ''
+            },
+            defaultTheme: {
+                type: Boolean,
+                default: false,
             },
             // Dropzone option props see http://www.dropzonejs.com/#config-url
             url: {
@@ -197,6 +201,13 @@
 
                 return _.merge(defaultLang, this.languages);
             },
+            parseDropzoneClass() {
+                if (_.isEmpty(this.dropzoneClass) && this.defaultTheme) {
+                    return 'dash-dropzone';
+                }
+
+                return this.dropzoneClass;
+            }
         },
         methods: {
             initDropzone() {

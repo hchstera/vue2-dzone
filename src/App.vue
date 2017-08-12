@@ -2,7 +2,8 @@
     <div>
         <section class="demo-section">
             <h1 class="demo-h1">Try it out!</h1>
-            <vue-dzone ref="mydzone" @dropzone-init="catchDropzone" :options="options" :url="'/photo/upload'" :id="'mydzone'">
+            <vue-dzone ref="mydzone" @dropzone-init="catchDropzone" :url="'/photo/upload'" :defaultTheme="true" :id="'mydzone'">
+                <div class="dz-message" slot="form"><span>Hey drop here</span></div>
             </vue-dzone>
         </section>
     </div>
