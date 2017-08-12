@@ -122,7 +122,7 @@
                 }
             },
             clickable: {
-                type: Boolean,
+                type: [Boolean, String],
                 default: true,
             },
             ignoreHiddenFiles: {
