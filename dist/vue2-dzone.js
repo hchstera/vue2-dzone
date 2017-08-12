@@ -689,20 +689,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -900,7 +886,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 url: this.url,
                 method: this.method,
                 timeout: this.timeout,
-                previewTemplate: this.$refs.previewTemplate.outerHTML,
                 parallelUploads: this.parallelUploads,
                 uploadMultiple: this.uploadMultiple,
                 maxFilesize: this.maxFilesize,
@@ -931,6 +916,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 renameFile: this.renameFile,
                 forceFallback: this.forceFallback
             };
+            // merge slot preview template
+            if (!_.isEmpty(this.$refs.previewTemplate.innerHTML)) {
+                options = _.merge(options, { previewTemplate: this.$refs.previewTemplate.innerHTML });
+            }
 
             // merge language option from computed
             options = _.merge(options, this.mergeLanuages);
@@ -3032,56 +3021,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "action": "/file-upload"
     }
   }, [_vm._t("form")], 2), _vm._v(" "), _c('div', {
+    ref: "previewTemplate",
     staticStyle: {
       "visibility": "hidden",
       "position": "absolute"
     }
-  }, [_vm._t("previeTemplate", [_c('div', {
-    ref: "previewTemplate",
-    staticClass: "dz-preview dz-file-preview"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)])])], 2)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "dz-image"
-  }, [_c('img', {
-    attrs: {
-      "data-dz-thumbnail": ""
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "dz-details"
-  }, [_c('div', {
-    staticClass: "dz-size"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "dz-filename"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "dz-progress"
-  }, [_c('span', {
-    staticClass: "dz-upload",
-    attrs: {
-      "data-dz-uploadprogress": ""
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "dz-error-message"
-  }, [_c('span', {
-    attrs: {
-      "data-dz-errormessage": ""
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "dz-success-mark"
-  }, [_c('span', [_vm._v("✔")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "dz-error-mark"
-  }, [_c('span', [_vm._v("✘")])])
-}]}
+  }, [_vm._t("previewTemplate")], 2)])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

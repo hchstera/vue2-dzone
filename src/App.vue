@@ -1,6 +1,10 @@
 <template>
     <div>
-        <vue-dzone ref="mydzone" @dropzone-init="catchDropzone" :options="options" :url="'/photo/upload'" :id="'mydzone'"></vue-dzone>
+        <section class="demo-section">
+            <h1 class="demo-h1">Try it out!</h1>
+            <vue-dzone ref="mydzone" @dropzone-init="catchDropzone" :options="options" :url="'/photo/upload'" :id="'mydzone'">
+            </vue-dzone>
+        </section>
     </div>
 </template>
 
@@ -11,20 +15,29 @@
 		data() {
             return {
                 dz:null,
-                options:{dictDefaultMessage: '請上傳BLABLABLA'}
             }
 		},
 		methods: {
 		    catchDropzone(dropzone) {
 		        this.dz = dropzone;
+		        console.log(this.dz);
             }
-		},
-		mounted() {
-		    console.log(Vue2Dzone);
 		},
 	}
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
     @import url('~dropzone/dist/dropzone.css');
+
+    .demo-section {
+        background: #E8E9EC;
+        padding: 1.4rem 1.4rem 2.8rem 1.4rem;
+        display: block;
+    }
+    .demo-h1 {
+        font-size: 1.8rem;
+        color: #0087F7;
+        -webkit-font-smoothing: antialiased;
+        line-height: 2.2rem;
+    }
 </style>

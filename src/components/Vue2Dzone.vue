@@ -4,22 +4,8 @@
         <form :id="id" action="/file-upload" :class="dropzoneClass">
             <slot name="form"></slot>
         </form>
-        <div style="visibility: hidden;position: absolute;">
-            <slot name="previeTemplate">
-                <div ref="previewTemplate" class="dz-preview dz-file-preview">
-                    <div class="dz-image">
-                        <img data-dz-thumbnail>
-                    </div>
-                    <div class="dz-details">
-                        <div class="dz-size"></div>
-                        <div class="dz-filename"></div>
-                    </div>
-                    <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
-                    <div class="dz-error-message"><span data-dz-errormessage></span></div>
-                    <div class="dz-success-mark"><span>✔</span></div>
-                    <div class="dz-error-mark"><span>✘</span></div>
-                </div>
-            </slot>
+        <div ref="previewTemplate" style="visibility: hidden;position: absolute;">
+            <slot name="previewTemplate"></slot>
         </div>
     </div>
 </template>
@@ -228,7 +214,6 @@
                     url: this.url,
                     method: this.method,
                     timeout: this.timeout,
-                    previewTemplate: this.$refs.previewTemplate.outerHTML,
                     parallelUploads: this.parallelUploads,
                     uploadMultiple: this.uploadMultiple,
                     maxFilesize: this.maxFilesize,
@@ -259,6 +244,10 @@
                     renameFile: this.renameFile,
                     forceFallback: this.forceFallback,
                 };
+                // merge slot preview template
+                if (!_.isEmpty(this.$refs.previewTemplate.innerHTML)) {
+                    options = _.merge(options, {previewTemplate: this.$refs.previewTemplate.innerHTML});
+                }
 
                 // merge language option from computed
                 options = _.merge(options, this.mergeLanuages);
