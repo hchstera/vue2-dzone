@@ -1,7 +1,7 @@
 <!--suppress CssUnknownTarget -->
 <template>
     <div>
-        <form :id="id" action="/file-upload" class="dropzone" :class="parseDropzoneClass">
+        <form :id="id" action="/file-upload" :class="parseDropzoneClass" :style="dropzoneStyle">
             <slot name="form"></slot>
         </form>
         <div ref="previewTemplate" style="visibility: hidden;position: absolute;">
@@ -21,6 +21,10 @@
                 required: true,
             },
             dropzoneClass: {
+                type: String,
+                default: ''
+            },
+            dropzoneStyle: {
                 type: String,
                 default: ''
             },
@@ -203,7 +207,7 @@
             },
             parseDropzoneClass() {
                 if (_.isEmpty(this.dropzoneClass) && this.defaultTheme) {
-                    return 'dash-dropzone';
+                    return 'dropzone dash-dropzone';
                 }
 
                 return this.dropzoneClass;
@@ -294,7 +298,6 @@
 
 <style lang="scss" rel="stylesheet/scss" scoped>
     @import url('~dropzone/dist/dropzone.css');
-
     .dash-dropzone {
         border: 2px dashed #0087F7;
         border-radius: 5px;
