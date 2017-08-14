@@ -24,7 +24,7 @@ Base on **Vue2**, wrapper for **Dropzone.js**.
 
 
 # Document and Demo
-comming soon   
+comming soon...
 
 # NPM Package  
 [NPM Package](https://www.npmjs.com/package/vue2-dzone)
@@ -44,4 +44,23 @@ or
 - By default, the DOM container with css (.dz-message) will be replace by preview template 
 
 # How to use 
-Comming soon ...
+Comming soon...
+
+# Props - Required
+| Prop Name | Type | Description |
+|----------|------|--------------|
+| id | String | The dropzone form's id.|
+| url | String | Upload url. (post by default)|
+
+# Props - Dropzone.js
+Same as dropzone.js
+See - [Dropzone configuration](http://www.dropzonejs.com/#configuration-options) 
+
+# Props - Custom
+| Prop Name | Type | Default | Description |
+|----------|------|------|--------|
+| dropzoneClass | String | empty string |The dropzone form's class. **do not use :class** to bind class, it will effect entire component not Dropzone's form|
+| dropzoneStyle | String | empty string |The dropzone form's style.|
+| defaultTheme | Boolean | false |if true, it will generate a dropzone like official style|
+| options | Object | empty object |if provide a object, it will be merge by dropzone's default options|
+

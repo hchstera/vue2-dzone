@@ -1,7 +1,7 @@
 <!--suppress CssUnknownTarget -->
 <template>
     <div>
-        <form :id="id" action="/file-upload" class="dropzone" :class="parseDropzoneClass" :style="dropzoneStyle">
+        <form :id="id" action="/file-upload" :class="parseDropzoneClass" :style="dropzoneStyle">
             <slot name="form"></slot>
         </form>
         <div ref="previewTemplate" style="visibility: hidden;position: absolute;">
@@ -27,6 +27,10 @@
             dropzoneStyle: {
                 type: String,
                 default: ''
+            },
+            disableDefaultClass: {
+                type: Boolean,
+                default: false,
             },
             defaultTheme: {
                 type: Boolean,
@@ -206,11 +210,15 @@
                 return _.merge(defaultLang, this.languages);
             },
             parseDropzoneClass() {
+                let defaultClass = 'dropzone';
+                if(this.disableDefaultClass) {
+                    defaultClass = '';
+                }
                 if (this.defaultTheme) {
-                    return 'dash-dropzone '+this.dropzoneClass;
+                    return 'dash-dropzone '+this.dropzoneClass+' '+defaultClass;
                 }
 
-                return this.dropzoneClass;
+                return this.dropzoneClass+' '+defaultClass;
             }
         },
         methods: {
@@ -278,6 +286,16 @@
                 this.$emit('dropzone-init', dropzone);
             },
             registerEvents() {
+                var vm = this;
+                this.dropzone.on('success', function (file, response) {
+                    vm.$emit('dzone-success', file, response);
+                });
+                this.dropzone.on('complete', function () {
+                    vm.$emit('dzone-complete');
+                });
+                this.dropzone.on('error', function (file, error, xhr) {
+                    vm.$emit('dzone-error', file, error, xhr);
+                });
 
             },
             checkOverrideOptions() {
@@ -292,6 +310,9 @@
             this.checkOverrideOptions();
             this.initDropzone();
             this.registerEvents();
+        },
+        beforeDestroy () {
+            this.dropzone.disable();
         },
     }
 </script>
