@@ -16,6 +16,7 @@ Base on **Vue2**, wrapper for **Dropzone.js**.
 
 # Features  
 - Default theme
+- Form using div tag, not form tag.
 - Vue-Slot driven form template
 - Vue-Slot driven preview template
 - pass option to dropzone from single prop
@@ -41,7 +42,7 @@ or
 # Notice
 - vue2-dzone base on Vue.js
 - vue2-dzone base on Dropzone.js
-- By default, the DOM container with css (.dz-message) will be replace by preview template 
+- By Dropzone default, the DOM container with css (.dz-message) will be replace by preview template 
 
 # How to use 
 Comming soon...
@@ -64,3 +65,11 @@ See - [Dropzone configuration](http://www.dropzonejs.com/#configuration-options)
 | defaultTheme | Boolean | false |if true, it will generate a dropzone like official style|
 | options | Object | empty object |if provide a object, it will be merge by dropzone's default options|
 
+# Events
+| Event Name | Payload  | Description |
+|----------|------|--------|
+| dzone-success |  file, response |The file has been uploaded successfully. Gets the server response as second argument. |
+| dzone-error |  file, error, xhr |An error occured. Receives the errorMessage as second parameter and if the error was due to the XMLHttpRequest the xhr object as third.|
+| dzone-complete |  nothing |Called when the upload was either successful or erroneous.|
+| dzone-queuecomplete |  **files** |Called when all files in the queue finish uploading.|
+| dzone-addedfile | file | When a file is added to the list |

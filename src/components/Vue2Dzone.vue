@@ -1,9 +1,9 @@
 <!--suppress CssUnknownTarget -->
 <template>
     <div>
-        <form :id="id" action="/file-upload" :class="parseDropzoneClass" :style="dropzoneStyle">
+        <div :id="id" action="/file-upload" :class="parseDropzoneClass" :style="dropzoneStyle">
             <slot name="form"></slot>
-        </form>
+        </div>
         <div ref="previewTemplate" style="visibility: hidden;position: absolute;">
             <slot name="previewTemplate"></slot>
         </div>
@@ -197,7 +197,7 @@
                     dictFallbackMessage: 'Your browser does not support drag and drop file uploads.',
                     dictFallbackText: 'Please use the fallback form below to upload your files like in the olden days.',
                     dictFileTooBig: 'File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.',
-                    dictInvalidFileType: `You can't upload files of this type.`,
+                    dictInvalidFileType: "You can't upload files of this type.",
                     dictResponseError: 'Server responded with {{statusCode}} code.',
                     dictCancelUpload: 'Cancel upload',
                     dictCancelUploadConfirmation: 'Are you sure you want to cancel this upload?',
@@ -296,6 +296,12 @@
                 this.dropzone.on('error', function (file, error, xhr) {
                     vm.$emit('dzone-error', file, error, xhr);
                 });
+                this.dropzone.on('queuecomplete', function() {
+                    vm.$emit('dzone-queuecomplete', vm.dropzone.files);
+                });
+                this.dropzone.on('addedfile', function(file) {
+                    vm.$emit('dzone-addedfile', file);
+                })
 
             },
             checkOverrideOptions() {
