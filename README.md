@@ -25,7 +25,7 @@ Base on **Vue2**, wrapper for **Dropzone.js**.
 
 
 # Document and Demo
-comming soon...
+coming soon...
 
 # NPM Package  
 [NPM Package](https://www.npmjs.com/package/vue2-dzone)
@@ -45,7 +45,7 @@ or
 - By Dropzone default, the DOM container with css (.dz-message) will be replace by preview template 
 
 # How to use 
-Comming soon...
+Coming soon...
 
 # Props - Required
 | Prop Name | Type | Description |
@@ -68,6 +68,12 @@ See - [Dropzone configuration](http://www.dropzonejs.com/#configuration-options)
 # Events
 | Event Name | Payload  | Description |
 |----------|------|--------|
+| dzone-drop |  dom-event |The user dropped something onto the dropzone. |
+| dzone-dragstart |  dom-event | The user started to drag anywhere |
+| dzone-dragend |  dom-event | Dragging has ended |
+| dzone-dragenter |  dom-event | The user dragged a file onto the Dropzone |
+| dzone-dragover |  dom-event | The user is dragging a file over the Dropzone |
+| dzone-dragleave |  dom-event | The user dragged a file out of the Dropzone |
 | dzone-success |  file, response |The file has been uploaded successfully. Gets the server response as second argument. |
 | dzone-error |  file, error, xhr |An error occured. Receives the errorMessage as second parameter and if the error was due to the XMLHttpRequest the xhr object as third.|
 | dzone-complete |  nothing |Called when the upload was either successful or erroneous.|

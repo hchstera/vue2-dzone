@@ -301,7 +301,27 @@
                 });
                 this.dropzone.on('addedfile', function(file) {
                     vm.$emit('dzone-addedfile', file);
-                })
+                });
+
+                // Drag Dom Events
+                this.dropzone.on('drop', function(event) {
+                    vm.$emit('dzone-drop', event);
+                });
+                this.dropzone.on('dragstart', function(event) {
+                    vm.$emit('dzone-dragstart', event);
+                });
+                this.dropzone.on('dragend', function(event) {
+                    vm.$emit('dzone-dragend', event);
+                });
+                this.dropzone.on('dragenter', function(event) {
+                    vm.$emit('dzone-dragenter', event);
+                });
+                this.dropzone.on('dragover', function(event) {
+                    vm.$emit('dzone-dragover', event);
+                });
+                this.dropzone.on('dragleave', function(event) {
+                    vm.$emit('dzone-dragleave', event);
+                });
 
             },
             checkOverrideOptions() {
