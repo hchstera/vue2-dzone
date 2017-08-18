@@ -8,7 +8,7 @@ var mix = require('laravel-mix');
  */
 
 // build the demo bundle with Vue instance
-mix.js('src/demo.js', 'dist/bundle.js');
+mix.js('src/demo.js', 'docs/bundle.js');
 
 // build dropzone and vue2-dzone to single js
 mixLib.webpackConfig({
