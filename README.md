@@ -25,7 +25,7 @@ Base on **Vue2**, wrapper for **Dropzone.js**.
 
 
 # Document and Demo
-coming soon...
+- [gh-page demo](https://hchstera.github.io/vue2-dzone/)
 
 # NPM Package  
 [NPM Package](https://www.npmjs.com/package/vue2-dzone)
