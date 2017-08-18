@@ -68,6 +68,7 @@ See - [Dropzone configuration](http://www.dropzonejs.com/#configuration-options)
 # Events
 | Event Name | Payload  | Description |
 |----------|------|--------|
+| dzone-init |  **Dropzone instance** |  when dropzone init, vue2dozne will emit this event with dropzone instance|
 | dzone-drop |  dom-event |The user dropped something onto the dropzone. |
 | dzone-dragstart |  dom-event | The user started to drag anywhere |
 | dzone-dragend |  dom-event | Dragging has ended |

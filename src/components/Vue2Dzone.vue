@@ -283,7 +283,7 @@
                 return options;
             },
             emitDropzoneInstance(dropzone) {
-                this.$emit('dropzone-init', dropzone);
+                this.$emit('dzone-init', dropzone);
             },
             registerEvents() {
                 var vm = this;

@@ -28873,7 +28873,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return options;
           },
           emitDropzoneInstance: function emitDropzoneInstance(dropzone) {
-            this.$emit('dropzone-init', dropzone);
+            this.$emit('dzone-init', dropzone);
           },
           registerEvents: function registerEvents() {
             var vm = this;
