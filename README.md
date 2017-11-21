@@ -4,6 +4,8 @@ Base on **Vue2**, wrapper for **Dropzone.js**.
 - [Dropzone js](http://www.dropzonejs.com/)  
 
 
+
+
 # Render a Upload-Area Easily  
 - Default Theme
 ```html
